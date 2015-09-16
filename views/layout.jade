@@ -18,6 +18,29 @@ html
           $('#player').css('left', posX);
         }
 
+        function getRandomPosition() {
+          var x = Math.floor(Math.random() * (window.innerWidth + 1));
+          var y = Math.floor(Math.random() * (window.innerHeight + 1));
+
+          return { x: x, y: y };
+        }
+
+        function addTarget() {
+          var pos = getRandomPosition();
+
+          console.log('adding target', pos.x, pos.y);
+          $('#targets').append('<div class="target" style="position: absolute; top: ' + pos.y + 'px; left: ' + pos.x + 'px;">');
+        }
+
+        function checkCollision() {
+
+        }
+
+        addTarget();
+        addTarget();
+        addTarget();
+        addTarget();
+
         socket.on('move', function(x, y) {
           posX += x * 4;
           posY += y * 4;
