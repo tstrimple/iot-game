@@ -19,8 +19,8 @@ html
         }
 
         socket.on('move', function(x, y) {
-          posX += x;
-          posY += y;
+          posX += x * 1;
+          posY += y * 1;
           updatePosition();
         });
       });
