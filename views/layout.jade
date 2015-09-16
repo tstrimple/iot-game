@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+    script(src='//code.jquery.com/jquery-2.1.4.min.js')
+    script(src='/socket.io/socket.io.js')
+    script.
+      $(document).ready(function() {
+        var socket = io();
+        var posX = 0;
+        var posY = 0;
+
+        function updatePosition() {
+          $('#player').css('top', posY);
+          $('#player').css('left', posX);
+        }
+
+        socket.on('move', function(x, y) {
+          posX += x;
+          posY += y;
+          updatePosition();
+        });
+      });
+
