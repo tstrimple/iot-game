@@ -31,7 +31,7 @@ io.on('connection', function(socket) {
 });
 
 function movePlayer(x, y) {
-  io.sockets.emit('move', 1, 1);
+  io.sockets.emit('move', x, y);
 }
 
 http.listen(port, function() {
